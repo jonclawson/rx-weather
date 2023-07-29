@@ -4,14 +4,15 @@ import { RxWeatherLoad } from './state/actions';
 import { RootState, RxWeatherResponse, RxWeatherState } from './state/types';
 import { connect } from 'react-redux';
 import ReactMapboxGl, { GeoJSONLayer } from 'react-mapbox-gl';
-import mapboxgl from "mapbox-gl";
+import mapboxgl from 'mapbox-gl';
 
 interface RxWeatherProps {
   name: string;
   weather: RxWeatherResponse;
   fetchWeather: typeof RxWeatherLoad.strictGet;
 }
-mapboxgl.accessToken = 'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtuY2Vpc3Axbm9wM3FwNDl5b3d1cG1jIn0.EN4W21N96PubdJrg22S6rA';
+mapboxgl.accessToken =
+  'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtuY2Vpc3Axbm9wM3FwNDl5b3d1cG1jIn0.EN4W21N96PubdJrg22S6rA';
 const Map = ReactMapboxGl({
   accessToken:
     'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtuY2Vpc3Axbm9wM3FwNDl5b3d1cG1jIn0.EN4W21N96PubdJrg22S6rA',
@@ -78,13 +79,13 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
               <Map
                 style="mapbox://styles/mapbox/streets-v9" // eslint-disable-line
                 containerStyle={{
-                  height: '100vh',
-                  width: '100vw',
+                  height: '90vh',
+                  width: '90vw',
                 }}
                 zoom={[16]}
                 center={[
-                  this.props.weather.coord.lon, 
-                  this.props.weather.coord.lat
+                  this.props.weather.coord.lon,
+                  this.props.weather.coord.lat,
                 ]}
               ></Map>
             </div>
