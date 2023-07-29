@@ -1,0 +1,27 @@
+{
+  "name": "react-typescript-base",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "@types/react": "16.0.0",
+    "@types/react-dom": "15.5.1",
+    "@types/react-redux": "5",
+    "react": "15.6.1",
+    "react-dom": "15.6.1",
+    "react-redux": "^5.1.2",
+    "redux": "3",
+    "redux-observable": "0.16",
+    "redux-typed-actions": "0.1.5",
+    "rxjs": "5.5.12"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "react-scripts-ts": "latest"
+  }
+}
