@@ -88,12 +88,11 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
                   this.props.weather.coord.lat,
                 ]}
               ></Map>
+              {/* <pre>{JSON.stringify(this.props?.weather, 1, ' ')}</pre> */}
             </div>
           ) : (
             ''
           )}
-
-          <pre>{JSON.stringify(this.props?.weather, 1, ' ')}</pre>
         </div>
       </div>
     );
