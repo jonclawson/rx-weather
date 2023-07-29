@@ -14,8 +14,7 @@ interface RxWeatherProps {
 mapboxgl.accessToken =
   'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtuY2Vpc3Axbm9wM3FwNDl5b3d1cG1jIn0.EN4W21N96PubdJrg22S6rA';
 const Map = ReactMapboxGl({
-  accessToken:
-    'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtuY2Vpc3Axbm9wM3FwNDl5b3d1cG1jIn0.EN4W21N96PubdJrg22S6rA',
+  accessToken: mapboxgl.accessToken,
 });
 
 export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
