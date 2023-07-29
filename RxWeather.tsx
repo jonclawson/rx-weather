@@ -11,8 +11,7 @@ interface RxWeatherProps {
   weather: RxWeatherResponse;
   fetchWeather: typeof RxWeatherLoad.strictGet;
 }
-mapboxgl.accessToken =
-  'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtuY2Vpc3Axbm9wM3FwNDl5b3d1cG1jIn0.EN4W21N96PubdJrg22S6rA';
+mapboxgl.accessToken = 'xxxx';
 const Map = ReactMapboxGl({
   accessToken: mapboxgl.accessToken,
 });
