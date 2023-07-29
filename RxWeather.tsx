@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import { Subject } from 'rxjs';
 import { RxWeatherLoad } from './state/actions';
 import { RootState, RxWeatherResponse, RxWeatherState } from './state/types';
-import { connect, Dispatch } from 'react-redux';
+import { connect } from 'react-redux';
 
-// export default ({ name }) => <h1>Weather {name}!</h1>;
 interface RxWeatherProps {
   name: string;
   weather: RxWeatherResponse;
-  // Simplifies typing by duplicating them...
   fetchWeather: typeof RxWeatherLoad.strictGet;
 }
 
