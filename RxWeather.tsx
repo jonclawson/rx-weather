@@ -51,7 +51,7 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
             <input
               className="form-control"
               type="text"
-              placeholder="Enter a City"
+              placeholder="City,State Code,Country Code"
               defaultValue={this.props.weather?.name}
               onChange={this.handleQueryInput}
             />
