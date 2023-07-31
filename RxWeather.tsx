@@ -30,6 +30,15 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
       .debounceTime(500)
       .filter((value) => value.length > 0)
       .subscribe((value) => this.props.fetchWeather({ query: value }));
+
+    navigator.geolocation.getCurrentPosition((position) => {
+      document.querySelector('body').innerHTML +=
+        'Latitude: ' +
+        position.coords.latitude +
+        '<br>Longitude: ' +
+        position.coords.longitude;
+        this.props.fetchWeather({ coords: position.coords });
+    });
   }
 
   handleQueryInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +51,7 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
   }
 
   render() {
-    console.log(JSON.stringify(this.props.weather, null, ' '));
+    // console.log(JSON.stringify(this.props.weather, null, ' '));
     return (
       <div className="container mt-3">
         <div className="row">
@@ -91,7 +100,9 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
                     <div>high: {this.props.weather?.main.temp_max}°F</div>
                     <div>Humidity: {this.props.weather?.main.humidity}%</div>
                     <div>Presure: {this.props.weather?.main.pressure} </div>
-                    <div>Wind: {this.props.weather?.wind.speed.toFixed()} mph </div>
+                    <div>
+                      Wind: {this.props.weather?.wind.speed.toFixed()} mph{' '}
+                    </div>
                   </div>
                 </div>
 
