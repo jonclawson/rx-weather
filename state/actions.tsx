@@ -3,7 +3,7 @@ import { RxWeatherResponse } from './types';
 
 export const RxWeatherLoad = defineScenarioAction<
   {
-    query: string;
+    query?: string;
     coords?: { latitude: number; longitude: number };
   },
   RxWeatherResponse
