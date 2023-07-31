@@ -44,59 +44,58 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
   render() {
     console.log(JSON.stringify(this.props.weather, null, ' '));
     return (
-    <div className="container mt-3">
-      <div className="row">
-        <div className="col">
-          <div>
-            <input
-              className="form-control"
-              type="text"
-              placeholder="City,State Code,Country Code"
-              defaultValue={this.props.weather?.name}
-              onChange={this.handleQueryInput}
-            />
-          </div>
-          {this.props.weather ? (
-            <div className="mt-3 container">
-              <div className="row">
-                <div className="col-6">
-                  {this.props.weather?.weather?.map((w) => (
-                    <h1>
-                      {w.description}{' '}
-                      <img
-                        className=""
-                        src={`//openweathermap.org/img/wn/${w.icon}@2x.png`}
-                      />
-                      <span className="badge bg-warning">
-                        {this.props.weather?.main?.temp.toFixed(0)}°F
-                      </span>
-                    </h1>
-                  ))}
-                  <div className="text-center">
-                    <div>
-                      Sunrise: {this.readTimeStamp(this.props.weather?.sys.sunrise)} 
-                    </div>
-                    <div>
-                      Sunset: {this.readTimeStamp(this.props.weather?.sys.sunset)}
+      <div className="container mt-3">
+        <div className="row">
+          <div className="col">
+            <div>
+              <input
+                className="form-control"
+                type="text"
+                placeholder="City,State Code,Country Code"
+                defaultValue={this.props.weather?.name}
+                onChange={this.handleQueryInput}
+              />
+            </div>
+            {this.props.weather ? (
+              <div className="mt-3 container">
+                <div className="row">
+                  <div className="col-6">
+                    {this.props.weather?.weather?.map((w) => (
+                      <h1>
+                        {w.description}{' '}
+                        <img
+                          className=""
+                          src={`//openweathermap.org/img/wn/${w.icon}@2x.png`}
+                        />
+                        <span className="badge bg-warning">
+                          {this.props.weather?.main?.temp.toFixed(0)}°F
+                        </span>
+                      </h1>
+                    ))}
+                    <div className="text-center small">
+                      <div>
+                        Sunrise:{' '}
+                        {this.readTimeStamp(this.props.weather?.sys.sunrise)}
+                      </div>
+                      <div>
+                        Sunset:{' '}
+                        {this.readTimeStamp(this.props.weather?.sys.sunset)}
+                      </div>
                     </div>
                   </div>
-  
-                </div>
-                <div className="col-6 alert alert-warning">
-                  <div>
-                    feels like: {this.props.weather?.main?.feels_like}°F{' '}
+                  <div className="col-6 alert alert-warning">
+                    <div>
+                      Feels like: {this.props.weather?.main?.feels_like}°F
+                    </div>
+                    <div>low: {this.props.weather?.main.temp_min}°F</div>
+                    <div>high: {this.props.weather?.main.temp_max}°F</div>
+                    <div>Humidity: {this.props.weather?.main.humidity}%</div>
+                    <div>Presure: {this.props.weather?.main.pressure} </div>
+                    <div>Wind: {this.props.weather?.wind.speed.toFixed()} mph </div>
                   </div>
-                  <div>low: {this.props.weather?.main.temp_min} </div>
-                  <div>high: {this.props.weather?.main.temp_max} </div>
-                  <div>Humidity: {this.props.weather?.main.humidity} </div>
-                  <div>Presure: {this.props.weather?.main.pressure} </div>
-                  <div>Wind: {this.props.weather?.wind.speed} mph </div>
                 </div>
-              </div>
 
-              
-
-              {/* <Map
+                {/* <Map
                 style="mapbox://styles/mapbox/streets-v9" // eslint-disable-line
                 containerStyle={{
                   height: '90vh',
@@ -108,13 +107,13 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
                   this.props.weather.coord.lat,
                 ]}
               ></Map> */}
-            </div>
-          ) : (
-            ''
-          )}
+              </div>
+            ) : (
+              ''
+            )}
+          </div>
         </div>
       </div>
-    </div>
     );
   }
 }
