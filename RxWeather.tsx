@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Subject } from 'rxjs';
 import { RxWeatherLoad } from './state/actions';
 import { RootState, RxWeatherResponse, RxWeatherState } from './state/types';
@@ -17,23 +17,43 @@ interface RxWeatherProps {
 // });
 
 export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
-  name: string;
   input$ = new Subject<string>();
+  loading;
 
   icon = (src) => <img id="wicon" src="{src}" alt="Weather icon" />;
 
   constructor(props) {
     super(props);
-    this.name = props.name;
 
     this.input$
       .debounceTime(500)
       .filter((value) => value.length > 0)
       .subscribe((value) => this.props.fetchWeather({ query: value }));
 
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.props.fetchWeather({ coords: position.coords });
-    });
+    this.loading = true;
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.props.fetchWeather({ coords: position.coords });
+        this.loading = false;
+      },
+      (error) => {
+        this.loading = false;
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            console.log('User denied the request for Geolocation.');
+            break;
+          case error.POSITION_UNAVAILABLE:
+            console.log('Location information is unavailable.');
+            break;
+          case error.TIMEOUT:
+            console.log('The request to get user location timed out.');
+            break;
+          default:
+            console.log('An unknown error occurred.');
+            break;
+        }
+      }
+    );
   }
 
   handleQueryInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,13 +72,20 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
         <div className="row">
           <div className="col">
             <div>
-              <input
-                className="form-control"
-                type="text"
-                placeholder="City,State Code,Country Code"
-                defaultValue={this.props.weather?.name}
-                onChange={this.handleQueryInput}
-              />
+              {JSON.stringify(this.loading)}
+              {this.loading ? (
+                <div className="spinner-border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              ) : (
+                <input
+                  className="form-control"
+                  type="text"
+                  placeholder="City,State Code,Country Code"
+                  defaultValue={this.props.weather?.name}
+                  onChange={this.handleQueryInput}
+                />
+              )}
             </div>
             {this.props.weather ? (
               <div className="mt-3 container">
