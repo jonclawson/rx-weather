@@ -44,10 +44,10 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
   render() {
     console.log(JSON.stringify(this.props.weather, null, ' '));
     return (
+    <div className="container mt-3">
       <div className="row">
         <div className="col">
           <div>
-            <h1> {this.name}</h1>
             <input
               className="form-control"
               type="text"
@@ -57,7 +57,7 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
             />
           </div>
           {this.props.weather ? (
-            <div className="mt-3">
+            <div className="mt-3 container">
               <div className="row">
                 <div className="col-6">
                   {this.props.weather?.weather?.map((w) => (
@@ -72,9 +72,17 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
                       </span>
                     </h1>
                   ))}
+                  <div className="text-center">
+                    <div>
+                      Sunrise: {this.readTimeStamp(this.props.weather?.sys.sunrise)} 
+                    </div>
+                    <div>
+                      Sunset: {this.readTimeStamp(this.props.weather?.sys.sunset)}
+                    </div>
+                  </div>
   
                 </div>
-                <div className="col-6">
+                <div className="col-6 alert alert-warning">
                   <div>
                     feels like: {this.props.weather?.main?.feels_like}°F{' '}
                   </div>
@@ -86,10 +94,7 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
                 </div>
               </div>
 
-              <div>
-                Sunrise: {this.readTimeStamp(this.props.weather?.sys.sunrise)} ,
-                Sunset: {this.readTimeStamp(this.props.weather?.sys.sunset)} ,
-              </div>
+              
 
               {/* <Map
                 style="mapbox://styles/mapbox/streets-v9" // eslint-disable-line
@@ -109,6 +114,7 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
           )}
         </div>
       </div>
+    </div>
     );
   }
 }

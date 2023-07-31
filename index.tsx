@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import RxWeather from './RxWeather';
 import './style.css';
-import './bootstrap.css';
+// import './bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -21,8 +22,13 @@ class App extends Component<AppProps, AppState> {
 
   render() {
     return (
-      <div className="container">
-        <RxWeather name={this.state.name} />
+      <div>
+        <nav className="navbar navbar-expand-lg bg-warning ">
+          <div className="container-fluid ">
+            <span className="display-5 ">RxWeather</span>
+          </div>
+        </nav>
+        <RxWeather />
       </div>
     );
   }
