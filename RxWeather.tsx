@@ -32,12 +32,7 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
       .subscribe((value) => this.props.fetchWeather({ query: value }));
 
     navigator.geolocation.getCurrentPosition((position) => {
-      document.querySelector('body').innerHTML +=
-        'Latitude: ' +
-        position.coords.latitude +
-        '<br>Longitude: ' +
-        position.coords.longitude;
-        this.props.fetchWeather({ coords: position.coords });
+      this.props.fetchWeather({ coords: position.coords });
     });
   }
 
