@@ -31,7 +31,6 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
       .filter((value) => value.length > 0)
       .subscribe((value) => this.props.fetchWeather({ query: value }));
 
-    this.setState((s) => ({ ...s, loading: true }));
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.props.fetchWeather({ coords: position.coords });
@@ -73,7 +72,7 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
   }
 
   render() {
-    // console.log(JSON.stringify(this.state));
+    console.log(JSON.stringify(this.state.error));
     // console.log(JSON.stringify(this.props.weather, null, ' '));
     return (
       <div className="container mt-3">
