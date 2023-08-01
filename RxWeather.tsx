@@ -1,10 +1,10 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { Subject } from 'rxjs';
 import { RxWeatherLoad } from './state/actions';
 import { RootState, RxWeatherResponse, RxWeatherState } from './state/types';
 import { connect } from 'react-redux';
-import ReactMapboxGl, { GeoJSONLayer } from 'react-mapbox-gl';
-import mapboxgl from 'mapbox-gl';
+// import ReactMapboxGl, { GeoJSONLayer } from 'react-mapbox-gl';
+// import mapboxgl from 'mapbox-gl';
 
 interface RxWeatherProps {
   name: string;
@@ -20,8 +20,6 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
   input$ = new Subject<string>();
 
   icon = (src) => <img id="wicon" src="{src}" alt="Weather icon" />;
-
-  state;
 
   constructor(props) {
     super(props);
@@ -75,7 +73,8 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
   }
 
   render() {
-    console.log(JSON.stringify(this.props.weather, null, ' '));
+    // console.log(JSON.stringify(this.state));
+    // console.log(JSON.stringify(this.props.weather, null, ' '));
     return (
       <div className="container mt-3">
         <div className="row">

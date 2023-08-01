@@ -24,7 +24,7 @@ function rxWeatherReducer(state: RxWeatherState = InitialState, action: PlainAct
   } else if (RxWeatherLoad.success.is(action)) {
     return {
       ...state,
-      message: '',
+      message: 'success',
       loading: false,
       weather: action.payload,
     };
