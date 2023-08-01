@@ -63,13 +63,15 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
     this.input$.next(e.target.value);
   };
 
-  readTimeStamp(unixTimestamp: number, timezoneOffset: number) {
+  readTimeStamp(unixTimestamp: number, timezoneOffset: number): string {
     // returm the time in the timezone of the timstamp offset not the browser timezone
     const clientOffset = new Date().getTimezoneOffset();
-    const offsetTimestamp = (unixTimestamp + (clientOffset * 60) + timezoneOffset)
+    const offsetTimestamp = unixTimestamp + clientOffset * 60 + timezoneOffset;
     var date = new Date(offsetTimestamp * 1000);
 
-    return date.toLocaleTimeString();
+    const dateString = date.toLocaleTimeString().split('');
+    dateString.splice(4, 3);
+    return dateString.join('');
   }
 
   render() {
@@ -112,11 +114,17 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
                     <div className="text-center small">
                       <div>
                         Sunrise:{' '}
-                        {this.readTimeStamp(this.props.weather?.sys.sunrise, this.props.weather?.timezone)}
+                        {this.readTimeStamp(
+                          this.props.weather?.sys.sunrise,
+                          this.props.weather?.timezone
+                        )}
                       </div>
                       <div>
                         Sunset:{' '}
-                        {this.readTimeStamp(this.props.weather?.sys.sunset, this.props.weather?.timezone)}
+                        {this.readTimeStamp(
+                          this.props.weather?.sys.sunset,
+                          this.props.weather?.timezone
+                        )}
                       </div>
                     </div>
                   </div>
