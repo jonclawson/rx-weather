@@ -11,7 +11,8 @@ interface RxWeatherProps {
   weather: RxWeatherResponse;
   fetchWeather: typeof RxWeatherLoad.strictGet;
 }
-mapboxgl.accessToken = 'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtycWsxZXUxZzUwM2Zwcm9pb3loaDdwIn0.ov_v9NV9rGjLnonE0uGXfA';
+mapboxgl.accessToken =
+  'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtycWsxZXUxZzUwM2Zwcm9pb3loaDdwIn0.ov_v9NV9rGjLnonE0uGXfA';
 const Map = ReactMapboxGl({
   accessToken: mapboxgl.accessToken,
 });
@@ -141,17 +142,17 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
                 </div>
 
                 <Map
-                style="mapbox://styles/mapbox/streets-v9" // eslint-disable-line
-                containerStyle={{
-                  height: '90vh',
-                  width: '90vw',
-                }}
-                zoom={[16]}
-                center={[
-                  this.props.weather.coord.lon,
-                  this.props.weather.coord.lat,
-                ]}
-              ></Map>
+                  style="mapbox://styles/mapbox/streets-v9" // eslint-disable-line
+                  containerStyle={{
+                    height: '90vh',
+                    width: '100%',
+                  }}
+                  zoom={[16]}
+                  center={[
+                    this.props.weather.coord.lon,
+                    this.props.weather.coord.lat,
+                  ]}
+                ></Map>
               </div>
             ) : (
               ''
