@@ -67,7 +67,7 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
   }
 
   render() {
-    // console.log(JSON.stringify(this.props.weather, null, ' '));
+    console.log(JSON.stringify(this.props.weather, null, ' '));
     return (
       <div className="container mt-3">
         <div className="row">

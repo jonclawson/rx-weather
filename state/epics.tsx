@@ -26,7 +26,7 @@ const rxWeather: Epic<PlainAction, RootState> = (action$, state) =>
   action$.filter(RxWeatherLoad.is).switchMap((action) => {
     const { query, coords } = action.payload;
     return Observable.ajax({
-      url: getQueryUrl(query, coords.latitude, coords.longitude),
+      url: getQueryUrl(query, coords?.latitude, coords?.longitude),
       async: true,
       method: 'get',
       crossDomain: true,
