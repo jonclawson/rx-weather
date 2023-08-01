@@ -21,10 +21,12 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
 
   icon = (src) => <img id="wicon" src="{src}" alt="Weather icon" />;
 
-  state = { weather: null, error: null, message: null, loading: true };
+  state;
 
   constructor(props) {
     super(props);
+
+    this.state = { weather: null, error: null, message: null, loading: true };
 
     this.input$
       .debounceTime(500)
@@ -61,8 +63,12 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
     this.input$.next(e.target.value);
   };
 
-  readTimeStamp(unix_timestamp: number) {
-    var date = new Date(unix_timestamp * 1000);
+  readTimeStamp(unixTimestamp: number, timezoneOffset: number) {
+    // returm the time in the timezone of the timstamp offset not the browser timezone
+    const clientOffset = new Date().getTimezoneOffset();
+    const offsetTimestamp = (unixTimestamp + (clientOffset * 60) + timezoneOffset)
+    var date = new Date(offsetTimestamp * 1000);
+
     return date.toLocaleTimeString();
   }
 
@@ -106,11 +112,11 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
                     <div className="text-center small">
                       <div>
                         Sunrise:{' '}
-                        {this.readTimeStamp(this.props.weather?.sys.sunrise)}
+                        {this.readTimeStamp(this.props.weather?.sys.sunrise, this.props.weather?.timezone)}
                       </div>
                       <div>
                         Sunset:{' '}
-                        {this.readTimeStamp(this.props.weather?.sys.sunset)}
+                        {this.readTimeStamp(this.props.weather?.sys.sunset, this.props.weather?.timezone)}
                       </div>
                     </div>
                   </div>
