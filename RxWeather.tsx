@@ -3,18 +3,18 @@ import { Subject } from 'rxjs';
 import { RxWeatherLoad } from './state/actions';
 import { RootState, RxWeatherResponse, RxWeatherState } from './state/types';
 import { connect } from 'react-redux';
-// import ReactMapboxGl, { GeoJSONLayer } from 'react-mapbox-gl';
-// import mapboxgl from 'mapbox-gl';
+import ReactMapboxGl, { GeoJSONLayer } from 'react-mapbox-gl';
+import mapboxgl from 'mapbox-gl';
 
 interface RxWeatherProps {
   name: string;
   weather: RxWeatherResponse;
   fetchWeather: typeof RxWeatherLoad.strictGet;
 }
-// mapboxgl.accessToken = 'xxxx';
-// const Map = ReactMapboxGl({
-//   accessToken: mapboxgl.accessToken,
-// });
+mapboxgl.accessToken = 'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtycWsxZXUxZzUwM2Zwcm9pb3loaDdwIn0.ov_v9NV9rGjLnonE0uGXfA';
+const Map = ReactMapboxGl({
+  accessToken: mapboxgl.accessToken,
+});
 
 export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
   input$ = new Subject<string>();
@@ -140,7 +140,7 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
                   </div>
                 </div>
 
-                {/* <Map
+                <Map
                 style="mapbox://styles/mapbox/streets-v9" // eslint-disable-line
                 containerStyle={{
                   height: '90vh',
@@ -151,7 +151,7 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
                   this.props.weather.coord.lon,
                   this.props.weather.coord.lat,
                 ]}
-              ></Map> */}
+              ></Map>
               </div>
             ) : (
               ''
