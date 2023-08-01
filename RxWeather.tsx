@@ -18,9 +18,10 @@ interface RxWeatherProps {
 
 export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
   input$ = new Subject<string>();
-  loading;
 
   icon = (src) => <img id="wicon" src="{src}" alt="Weather icon" />;
+
+  state = { weather: null, error: null, message: null, loading: true };
 
   constructor(props) {
     super(props);
@@ -30,14 +31,14 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
       .filter((value) => value.length > 0)
       .subscribe((value) => this.props.fetchWeather({ query: value }));
 
-    this.loading = true;
+    this.setState((s) => ({ ...s, loading: true }));
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.props.fetchWeather({ coords: position.coords });
-        this.loading = false;
+        this.setState((s) => ({ ...s, loading: false }));
       },
       (error) => {
-        this.loading = false;
+        this.setState((s) => ({ ...s, loading: false }));
         switch (error.code) {
           case error.PERMISSION_DENIED:
             console.log('User denied the request for Geolocation.');
@@ -72,8 +73,7 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
         <div className="row">
           <div className="col">
             <div>
-              {JSON.stringify(this.loading)}
-              {this.loading ? (
+              {this.state.loading ? (
                 <div className="spinner-border" role="status">
                   <span className="visually-hidden">Loading...</span>
                 </div>
