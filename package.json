@@ -5,17 +5,17 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "@types/mapbox-gl": "^2.7.12",
-    "@types/react": "16.0.0",
+    "@types/react": "^16.0.0-0 ^16.11.0 ^16.14.0",
     "@types/react-dom": "15.5.1",
-    "@types/react-redux": "5",
+    "@types/react-redux": "5.0.12",
     "bootstrap": "^5.3.1",
-    "mapbox-gl": "^2.15.0",
+    "mapbox-gl": "^1.10.1",
     "prop-types": "^15.6.2",
-    "react": "^0.14.0 || ^15.0.0-0 || ^16.0.0-0 ^16.11.0 ^16.14.0",
+    "react": "^16.0.0-0 ^16.11.0 ^16.14.0",
     "react-dom": "^16.11.0",
     "react-mapbox-gl": "4",
-    "react-redux": "^5.1.2",
-    "redux": "3",
+    "react-redux": "5.0.6",
+    "redux": "3.7.2",
     "redux-observable": "0.16",
     "redux-typed-actions": "0.1.5",
     "rxjs": "5.5.12"
@@ -27,6 +27,8 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
-    "react-scripts-ts": "latest"
+    "react-scripts-ts": "^2",
+    "tslint": "^5.20.1",
+    "typescript": "^2.8.6"
   }
 }

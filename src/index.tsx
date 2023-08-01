@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import { Component } from 'react';
 import { render } from 'react-dom';
-import RxWeather from './RxWeather';
+import RxWeather  from './RxWeather';
 import './style.css';
 // import './bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -14,7 +15,7 @@ interface AppState {
 
 class App extends Component<AppProps, AppState> {
   constructor() {
-    super();
+    super({});
     this.state = {
       name: 'RxWeather',
     };

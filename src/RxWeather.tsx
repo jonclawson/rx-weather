@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import { Component } from 'react';
 import { Subject } from 'rxjs';
 import { RxWeatherLoad } from './state/actions';
 import { RootState, RxWeatherResponse, RxWeatherState } from './state/types';
@@ -17,15 +18,14 @@ const Map = ReactMapboxGl({
   accessToken: mapboxgl.accessToken,
 });
 
-export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
+class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
   input$ = new Subject<string>();
 
-  icon = (src) => <img id="wicon" src="{src}" alt="Weather icon" />;
 
-  constructor(props) {
+  constructor(props: RxWeatherProps) {
     super(props);
 
-    this.state = { weather: null, error: null, message: null, loading: true };
+    this.state = { error: false, loading: true };
 
     this.input$
       .debounceTime(500)
