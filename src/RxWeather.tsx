@@ -5,15 +5,18 @@ import { RxWeatherLoad } from './state/actions';
 import { RootState, RxWeatherResponse, RxWeatherState } from './state/types';
 import { connect } from 'react-redux';
 import ReactMapboxGl, { GeoJSONLayer } from 'react-mapbox-gl';
-import mapboxgl from 'mapbox-gl';
+import * as mapboxgl from 'mapbox-gl';
 
 interface RxWeatherProps {
-  name: string;
   weather: RxWeatherResponse;
   fetchWeather: typeof RxWeatherLoad.strictGet;
 }
-mapboxgl.accessToken =
-  'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtycWsxZXUxZzUwM2Zwcm9pb3loaDdwIn0.ov_v9NV9rGjLnonE0uGXfA';
+
+Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set('pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtycWsxZXUxZzUwM2Zwcm9pb3loaDdwIn0.ov_v9NV9rGjLnonE0uGXfA');
+
+
+// mapboxgl.accessToken =
+//   'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtycWsxZXUxZzUwM2Zwcm9pb3loaDdwIn0.ov_v9NV9rGjLnonE0uGXfA';
 const Map = ReactMapboxGl({
   accessToken: mapboxgl.accessToken,
 });

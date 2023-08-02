@@ -1,39 +1,23 @@
-import * as React from 'react';
-import { Component } from 'react';
-import { render } from 'react-dom';
+import React from 'react';
+// import ReactDOM from 'react-dom/client';
+import { render } from 'react-dom'
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 import RxWeather  from './RxWeather';
 import './style.css';
 // import './bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Provider } from 'react-redux';
 import store from './store';
-
-interface AppProps {}
-interface AppState {
-  name: string;
-}
-
-class App extends Component<AppProps, AppState> {
-  constructor() {
-    super({});
-    this.state = {
-      name: 'RxWeather',
-    };
-  }
-
-  render() {
-    return (
-      <div>
-        <nav className="navbar navbar-expand-lg bg-warning ">
-          <div className="container-fluid ">
-            <span className="display-5 ">RxWeather</span>
-          </div>
-        </nav>
-        <RxWeather />
-      </div>
-    );
-  }
-}
+// const root = ReactDOM.createRoot(
+//   document.getElementById('root') as HTMLElement
+// );
+// root.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>
+// );
 
 render(
   <Provider store={store}>
@@ -41,3 +25,10 @@ render(
   </Provider>,
   document.getElementById('root')
 );
+
+// // If you want to start measuring performance in your app, pass a function
+// // to log results (for example: reportWebVitals(console.log))
+// // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+
+
