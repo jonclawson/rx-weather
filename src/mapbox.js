@@ -3,4 +3,4 @@ const token = 'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtycWsxZXUxZzUwM2Zwcm9pb3loaD
 mapbox_gl.accessToken =
   token;
 
-export default {mapbox_gl, key: token };
+export default {key: token };
