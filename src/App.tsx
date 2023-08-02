@@ -1,12 +1,9 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { render } from 'react-dom';
 import RxWeather  from './RxWeather';
 import './style.css';
-// import './bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Provider } from 'react-redux';
-import store from './store';
+
 
 interface AppProps {}
 interface AppState {
