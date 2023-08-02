@@ -12,13 +12,15 @@ interface RxWeatherProps {
   fetchWeather: typeof RxWeatherLoad.strictGet;
 }
 
-Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set('pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtycWsxZXUxZzUwM2Zwcm9pb3loaDdwIn0.ov_v9NV9rGjLnonE0uGXfA');
-
-
-// mapboxgl.accessToken =
-//   'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtycWsxZXUxZzUwM2Zwcm9pb3loaDdwIn0.ov_v9NV9rGjLnonE0uGXfA';
+const key = 'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtycWsxZXUxZzUwM2Zwcm9pb3loaDdwIn0.ov_v9NV9rGjLnonE0uGXfA';
+// Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(key);
+// mapboxgl.accessToken = key;
+new mapboxgl.Map({
+  accessToken: key,
+  container: ''
+})
 const Map = ReactMapboxGl({
-  accessToken: mapboxgl.accessToken,
+  accessToken: key,
 });
 
 class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
