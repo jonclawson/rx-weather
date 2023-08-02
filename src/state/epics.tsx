@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { AjaxError } from 'rxjs/observable/dom/AjaxObservable';
-import { ActionsObservable, Epic, combineEpics } from 'redux-observable';
+import { Epic, combineEpics } from 'redux-observable';
 import { PlainAction } from 'redux-typed-actions';
 import { RxWeatherLoad } from './actions';
 import { RootState } from './types';

@@ -5,16 +5,15 @@ import { RxWeatherLoad } from './state/actions';
 import { RootState, RxWeatherResponse, RxWeatherState } from './state/types';
 import { connect } from 'react-redux';
 import ReactMapboxGl from 'react-mapbox-gl';
-
+import mapboxGl from './mapbox';
 interface RxWeatherProps {
   weather: RxWeatherResponse;
   fetchWeather: typeof RxWeatherLoad.strictGet;
 }
 
-const key = 'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtycWsxZXUxZzUwM2Zwcm9pb3loaDdwIn0.ov_v9NV9rGjLnonE0uGXfA';
 
 const Map = ReactMapboxGl({
-  accessToken: key,
+  accessToken: mapboxGl.accessToken,
 });
 
 class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
