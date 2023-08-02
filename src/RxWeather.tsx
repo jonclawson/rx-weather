@@ -5,7 +5,7 @@ import { RxWeatherLoad } from './state/actions';
 import { RootState, RxWeatherResponse, RxWeatherState } from './state/types';
 import { connect } from 'react-redux';
 import ReactMapboxGl from 'react-mapbox-gl';
-import mapboxGl from './mapbox';
+import {mapboxGl, key} from './mapbox';
 interface RxWeatherProps {
   weather: RxWeatherResponse;
   fetchWeather: typeof RxWeatherLoad.strictGet;
@@ -13,7 +13,7 @@ interface RxWeatherProps {
 
 
 const Map = ReactMapboxGl({
-  accessToken: mapboxGl.accessToken,
+  accessToken: key,
 });
 
 class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
