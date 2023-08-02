@@ -1,5 +1,6 @@
-import * as mapboxGl from 'mapbox-gl';
+import mapbox_gl from 'mapbox-gl';
+const token = 'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtycWsxZXUxZzUwM2Zwcm9pb3loaDdwIn0.ov_v9NV9rGjLnonE0uGXfA';
+mapbox_gl.accessToken =
+  token;
 
-mapboxGl.accessToken = 'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtycWsxZXUxZzUwM2Zwcm9pb3loaDdwIn0.ov_v9NV9rGjLnonE0uGXfA';
-
-export default mapboxGl;
+export default { key: token };
