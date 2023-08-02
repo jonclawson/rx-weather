@@ -17,7 +17,7 @@ const key = 'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtycWsxZXUxZzUwM2Zwcm9pb3loaDdw
 // mapboxgl.accessToken = key;
 new mapboxgl.Map({
   accessToken: key,
-  container: ''
+  container: 'root'
 })
 const Map = ReactMapboxGl({
   accessToken: key,
