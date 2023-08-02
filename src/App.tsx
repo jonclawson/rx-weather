@@ -14,8 +14,8 @@ interface AppState {
 }
 
 export default class App extends Component<AppProps, AppState> {
-  constructor() {
-    super({});
+  constructor(props) {
+    super(props);
     this.state = {
       name: 'RxWeather',
     };

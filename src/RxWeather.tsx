@@ -4,8 +4,7 @@ import { Subject } from 'rxjs';
 import { RxWeatherLoad } from './state/actions';
 import { RootState, RxWeatherResponse, RxWeatherState } from './state/types';
 import { connect } from 'react-redux';
-import ReactMapboxGl, { GeoJSONLayer } from 'react-mapbox-gl';
-import * as mapboxgl from 'mapbox-gl';
+import ReactMapboxGl from 'react-mapbox-gl';
 
 interface RxWeatherProps {
   weather: RxWeatherResponse;
@@ -13,12 +12,7 @@ interface RxWeatherProps {
 }
 
 const key = 'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtycWsxZXUxZzUwM2Zwcm9pb3loaDdwIn0.ov_v9NV9rGjLnonE0uGXfA';
-// Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(key);
-// mapboxgl.accessToken = key;
-new mapboxgl.Map({
-  accessToken: key,
-  container: 'root'
-})
+
 const Map = ReactMapboxGl({
   accessToken: key,
 });
@@ -103,10 +97,10 @@ class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
               <div className="mt-3 container">
                 <div className="row">
                   <div className="col-6">
-                    {this.props.weather?.weather?.map((w) => (
-                      <h1>
+                    {this.props.weather?.weather?.map((w, i) => (
+                      <h1 key={i}>
                         {w.description}{' '}
-                        <img
+                        <img alt="icon"
                           className=""
                           src={`//openweathermap.org/img/wn/${w.icon}@2x.png`}
                         />
