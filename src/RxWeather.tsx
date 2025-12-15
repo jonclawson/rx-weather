@@ -1,31 +1,28 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import { Component } from 'react';
 import { Subject } from 'rxjs';
 import { RxWeatherLoad } from './state/actions';
 import { RootState, RxWeatherResponse, RxWeatherState } from './state/types';
 import { connect } from 'react-redux';
-import ReactMapboxGl, { GeoJSONLayer } from 'react-mapbox-gl';
-import mapboxgl from 'mapbox-gl';
-
+import ReactMapboxGl from 'react-mapbox-gl';
 interface RxWeatherProps {
-  name: string;
   weather: RxWeatherResponse;
   fetchWeather: typeof RxWeatherLoad.strictGet;
 }
-mapboxgl.accessToken =
-  'pk.eyJ1Ijoiam9uY2xhd3NvbiIsImEiOiJjbGtycWsxZXUxZzUwM2Zwcm9pb3loaDdwIn0.ov_v9NV9rGjLnonE0uGXfA';
+
+
 const Map = ReactMapboxGl({
-  accessToken: mapboxgl.accessToken,
+  accessToken: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN,
 });
 
-export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
+class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
   input$ = new Subject<string>();
 
-  icon = (src) => <img id="wicon" src="{src}" alt="Weather icon" />;
 
-  constructor(props) {
+  constructor(props: RxWeatherProps) {
     super(props);
 
-    this.state = { weather: null, error: null, message: null, loading: true };
+    this.state = { error: false, loading: true };
 
     this.input$
       .debounceTime(500)
@@ -98,10 +95,10 @@ export class RxWeather extends Component<RxWeatherProps, RxWeatherState> {
               <div className="mt-3 container">
                 <div className="row">
                   <div className="col-6">
-                    {this.props.weather?.weather?.map((w) => (
-                      <h1>
+                    {this.props.weather?.weather?.map((w, i) => (
+                      <h1 key={i}>
                         {w.description}{' '}
-                        <img
+                        <img alt="icon"
                           className=""
                           src={`//openweathermap.org/img/wn/${w.icon}@2x.png`}
                         />

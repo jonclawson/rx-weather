@@ -6,7 +6,7 @@ import { RxWeatherLoad } from './actions';
 
 
 export const InitialState: RxWeatherState = {
-  weather: null,
+  weather: undefined,
   error: false,
   message: '',
   loading: false,

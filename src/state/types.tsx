@@ -47,8 +47,8 @@ export interface RxWeatherResponse {
 }
 
 export interface RxWeatherState {
-  weather: RxWeatherResponse;
+  weather?: RxWeatherResponse;
   error: boolean;
-  message: string;
+  message?: string;
   loading: boolean;
 }
