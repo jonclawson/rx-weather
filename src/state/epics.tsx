@@ -8,7 +8,7 @@ import { RxWeatherResponse } from './types';
 import { filter, switchMap } from 'rxjs/operators';
 
 function getQueryUrl(query: string | undefined, lat: number | undefined, lon: number | undefined): string {
-  const key = '57226df170b92a945f80de10392146b1';
+  const key = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
   const units = 'imperial';
   const url = `//api.openweathermap.org/data/2.5/weather?APPID=${key}&units=${units}`;
 
